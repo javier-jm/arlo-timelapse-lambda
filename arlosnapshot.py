@@ -27,6 +27,10 @@ def lambda_handler(event, context):
         camera = cameras[i]
         upload_latest_snapshot(arlo, camera)
 
+    return {
+        'statusCode': 200
+    }
+
 def upload_latest_snapshot(arlo, camera):
     snapshot_url = camera.get("presignedLastImageUrl")
     # Store the latest camera image under the same place every time for each device
